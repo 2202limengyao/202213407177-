@@ -1,0 +1,132 @@
+:root {
+  --primary-color: rgb(76, 193, 76);/*换分区和页数时方块的颜色*/
+}
+body {
+  margin: 0;/*块级元素，表示相对位置居中，在页面中的作用为让图片下方居中*/
+  background: rgb(237, 231, 231);/*图片下方的背景颜色*/
+  font-family: Microsoft Yahei;/*字体为微软雅黑*/
+  font-size: 14px;/*字体大小*/
+  /* min-width: 1000px; */
+}
+a {
+  text-decoration: none;/*整体表示把超链接下的下划线给消除，并且把字体由蓝标黑*/
+  color: black;
+}
+header {
+  height: 90px;
+  background: white;
+  display: flex;/*页面的弹性布局*/
+  align-items: center;
+}
+.header-inner, main { 
+  padding: 20px;
+  margin: auto;/*上下左右自动调节居中位置*/
+}
+.tag-list {
+  margin-top: 50px;
+  margin-bottom: 15px;/*div这个块距离body内下一个块相对位置为15px*/
+}
+.tag-item {
+  display: inline-block;/*使元素变成块级元素，独占一行*/
+  padding: 0 8px;
+  margin-right: 24px;
+  line-height: 26px;
+  color: black;
+  text-decoration: none;
+}
+.tag-active {
+  background: var(--primary-color);/*将选中的分区字体变成白的*/
+}
+.tag-item:not(.tag-active):hover {
+  color: var(--primary-color);/*用于读取primary进行改变颜色*/
+}
+.nowrap {
+  white-space: nowrap;/*将多个空格合并成一个空格，自动换行*/
+  overflow: hidden;/*若超出了给定的宽度和高度属性，那么超出的部分将会被隐藏，不占位*/
+  text-overflow: ellipsis;/*clip:当前对象内文本溢出时不显示省略标记(...),而是将溢出部分裁剪，ellipsis:当对象内文本一处时显示省略标记(...)*/
+}
+.playlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 45px 15px;/*定义栅格布局的行与列间隙的尺寸*/
+  margin-bottom: 45px;/*距离底部相对位置为45px*/
+}
+.cover-wrap {
+  display: flex;/*页面的弹性布局*/
+  position: relative;
+  overflow: hidden;/*该元素的内容若超出了给定的宽度和高度属性，那么超出的部分将会被隐藏，不占位*/
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: center;/*justify-content描述弹性盒子容器的对齐方式*/
+  cursor: pointer;/*网页浏览时用户鼠标指针的样式或图形形状*/
+}
+.cover-img {
+  width: 100%;/*宽度变成整个区块的全部宽度，让图片适应区块*/
+  transition: all 0.75s;/*图片放大的速度*/
+}
+.cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0;/*透明度为0*/
+  transition: all 0.5s;/*放大移动速度为0.5秒*/
+}
+.cover-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -35px;
+  margin-top: -35px;
+  opacity: 0;/*透明度为0*/
+  transform: scale(0.7);/*宽和高都放大两倍*/
+  transition: all 0.5s;/*放大移动速度为0.5秒*/
+}
+.cover-wrap:hover .cover-mask {
+  opacity: 0.2;/*透明度为0.2*/
+}
+.cover-wrap:hover .cover-play {
+  opacity: 1;/*透明度为1*/
+  transform: scale(1);/*宽放大一倍*/
+}
+.cover-wrap:hover .cover-img {
+  transform: scale(1.07);/*宽放大1.07倍*/
+}
+.album-title:hover {
+  color: var(--primary-color);/*读取primary进行改变颜色*/
+}
+.album-author {
+  color: gray;
+  line-height: 1.6;
+}
+.album-author:hover {
+  color: var(--primary-color);/*读取primary进行改变颜色*/
+}
+.album-time {
+  color: gray;
+}
+.page {
+  display: flex;/*页面的弹性布局*/
+  align-items: center;
+  justify-content: center;
+}
+.page-item {
+  display: inline-block;/*使元素变成块级元素，独占一行*/
+  color: gray;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 10px;
+  font-size: 16px;
+}
+.page-current, .page-item:not(.page-more):hover {
+  background: var(--primary-color);/*读取primary中的背景颜色并改变*/
+  color: white;
+}
+footer {
+  margin-top: 60px;
+  background: rgb(59, 53, 44);
+  height: 200px;
+}
